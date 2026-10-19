@@ -1,24 +1,36 @@
 # Logistic Regression Classifier Workshop
 
-## Overview
+Binary classification (student pass/fail from hours studied) with logistic regression, binary cross-entropy, and gradient descent.
 
-This workshop introduces **logistic regression for binary classification**, using student study hours to predict pass/fail outcomes. Students connect the mathematical foundations of probability-based classification with Python implementation and evaluation.
+Jasper Lim
+9117038
 
-## Learning Objectives
+## Setup
 
-- Explain the **sigmoid function** and how predicted probabilities become class labels through a decision threshold.
-- Identify features, labels, classifiers, and **decision boundaries**.
-- Train a logistic regression classifier with **scikit-learn**, generate predictions, and assess accuracy.
-- Derive and interpret **binary cross-entropy (log-loss)**, including its penalty for confidently incorrect predictions.
-- Visualize sigmoid behavior and log-loss curves.
-- Implement logistic regression **from scratch**, using vectorized Python, log-loss, and **gradient descent** to optimize model weights.
+Requires Python 3.10+ and Git.
 
-## In-Class Activity and Deliverables
+```powershell
+git clone https://github.com/JasperCLim/LogisticRegressionClassifier_Workshop.git
+cd LogisticRegressionClassifier_Workshop
 
-Students develop and document their own binary classifier in a Jupyter Notebook, commit their work to GitHub, and exchange code reviews with a peer. Each student prepares three technical talking points and discusses their implementation and reflections.
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1        # macOS/Linux: source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-Submit a `PairProgrammingReport.ipynb` notebook containing the cross-entropy implementation and talking points, plus a brief team PDF report through the course dropbox. Follow the notebook's submission instructions.
+## How to Run
 
-## Getting Started
+1. Open the folder in VS Code (with the Jupyter extension) or run `jupyter lab`.
+2. Select the `.venv` interpreter as the notebook kernel.
+3. Open a notebook and choose **Run All**:
+   - [`LogisticRegressionClassifier_Workshop.ipynb`](LogisticRegressionClassifier_Workshop.ipynb): the workshop (sigmoid, scikit-learn model, log-loss, in-class activity).
+   - [`PairProgrammingReport.ipynb`](PairProgrammingReport.ipynb): the pair programming deliverable.
 
-Open [`LogisticRegressionClassifier_Workshop.ipynb`](LogisticRegressionClassifier_Workshop.ipynb) and follow the activities in sequence. Install dependencies using `pip install -r requirements.txt`.
+## PairProgrammingReport Overview
+
+[`PairProgrammingReport.ipynb`](PairProgrammingReport.ipynb) implements logistic regression from scratch with NumPy:
+
+- **Derivation:** binary cross-entropy loss, its gradient `(1/N) Xᵀ(ŷ − y)`, and the gradient descent update.
+- **Code:** vectorized sigmoid, loss, gradient, training loop, and prediction, with a numerical gradient check, loss curve, and decision-boundary plot.
+- **Validation:** the learned weights and loss match scikit-learn's unregularized `LogisticRegression`.
+- **Talking points:** three points on the implementation, plus three review points on the peer's implementation ([AlamirConestoga/LogisticRegressionClassifier_Workshop](https://github.com/AlamirConestoga/LogisticRegressionClassifier_Workshop)).
